@@ -8,7 +8,7 @@ type I1 interface {
 
 func main() {
 	var i I1
-	describe1w(i)
+	describe1(i)
 	i.M()
 }
 
