@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"sync"
 	"time"
 
@@ -35,19 +34,20 @@ type LimitProxy struct {
 
 // ResetLimitHandler resets the limit for a given key
 func ResetLimitHandler(c *fiber.Ctx) error {
-	// Done: [DELETE] /limit/:key/* pathine istek atildiginda limiti sifirlayan handleri implement edebilirsiniz.
-	// Done: implement me!
+	key := "/" + c.Params("key") + "/" + c.Params("*")
+	fmt.Printf("Attempting to reset limit for key: %s\n", key)
 
-	key := strings.TrimPrefix(c.Path(), "/limit")
-
-	// If the key does not exist, return NotFound error
 	counter.Lock()
 	defer counter.Unlock()
-	if _, ok := counter.v[key]; ok {
+
+	if _, ok := counter.v[key]; !ok {
+		fmt.Printf("Key %s not found in counter\n", key)
 		return fiber.ErrNotFound
 	}
 
-	delete(counter.v, key) // Safely deletes the key
+	delete(counter.v, key)
+	fmt.Printf("Limit reset for key %s\n", key)
+
 	c.Response().SetStatusCode(fiber.StatusNoContent)
 	return nil
 }

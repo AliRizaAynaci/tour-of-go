@@ -35,22 +35,19 @@ type CacheProxy struct {
 
 // EvictCacheHandler deletes a cache entry for a specific path.
 func EvictCacheHandler(c *fiber.Ctx) error {
-	// DONE: [DELETE] /cache/:key/* pathine istek atildiginda memorydeki cachei temizleyen handleri implement edebilirsiniz.
-	// Done: implement me!
-
-	key := c.Params("key")
-	path := "/" + key + c.Params("*") // Combine key and remaining path to form the full cache path.
+	key := "/" + c.Params("key") + "/" + c.Params("*")
+	fmt.Printf("Attempting to evict cache for key: %s\n", key)
 
 	cache.Lock()
 	defer cache.Unlock()
 
-	// If the key doesn't exist in the cache, return NotFound error
-	if _, ok := cache.data[path]; ok {
+	if _, ok := cache.data[key]; !ok {
+		fmt.Printf("Cache entry %s not found\n", key)
 		return fiber.ErrNotFound
 	}
 
-	// Safely delete the cache entry
-	delete(cache.data, path)
+	delete(cache.data, key)
+	fmt.Printf("Cache entry %s evicted successfully\n", key)
 
 	c.Response().SetStatusCode(fiber.StatusNoContent)
 	return nil

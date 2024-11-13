@@ -15,11 +15,7 @@ func main() {
 	// https://docs.gofiber.io/api/middleware/proxy
 	// Make request within handler
 	app.Get("/:key/*", ProxyHandler)
-
-	// DONE: implement handler!
 	app.Delete("cache/:key/*", EvictCacheHandler)
-	//
-	// DONE: implement handler!
 	app.Delete("limit/:key/*", ResetLimitHandler)
 
 	app.Listen(":3000")
