@@ -16,11 +16,11 @@ func main() {
 	// Make request within handler
 	app.Get("/:key/*", ProxyHandler)
 
-	//// TODO: implement handler!
-	//app.Delete("cache/:key/*", EvictCacheHandler)
+	// DONE: implement handler!
+	app.Delete("cache/:key/*", EvictCacheHandler)
 	//
-	//// TODO: implement handler!
-	//app.Delete("limit/:key/*", ResetLimitHandler)
+	// DONE: implement handler!
+	app.Delete("limit/:key/*", ResetLimitHandler)
 
 	app.Listen(":3000")
 }
