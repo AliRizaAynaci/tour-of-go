@@ -1,0 +1,16 @@
+mode: set
+basket/calculator.go:12.38,14.2 1 1
+basket/calculator.go:16.43,18.2 1 1
+basket/calculator.go:20.43,22.2 1 1
+basket/calculator.go:24.49,26.2 1 1
+basket/discount.go:13.77,18.2 1 1
+basket/discount.go:20.68,21.26 1 1
+basket/discount.go:21.26,23.3 1 1
+basket/discount.go:25.2,25.23 1 1
+basket/discount.go:25.23,27.3 1 1
+basket/discount.go:29.2,29.67 1 1
+basket/discount.go:32.74,34.26 1 1
+basket/discount.go:34.26,36.3 1 1
+basket/discount.go:38.2,40.24 2 1
+basket/discount.go:40.24,42.3 1 1
+basket/discount.go:44.2,44.67 1 1
